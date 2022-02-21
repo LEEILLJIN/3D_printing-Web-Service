@@ -1,5 +1,4 @@
 import React from 'react'
-import smooth from 'react-scroll/modules/mixins/smooth'
 import { Button } from '../ButtonElements'
 import { 
     InfoContainer,
