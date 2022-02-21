@@ -1,4 +1,5 @@
 {
+  "homepage": "https://leeilljin.github.io/tookdak",
   "name": "3d_printing-web-service",
   "version": "0.1.0",
   "private": true,
@@ -41,6 +42,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "homepage": "https://leeilljin.github.io/"
+  }
 }
