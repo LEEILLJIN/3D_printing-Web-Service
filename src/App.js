@@ -1,18 +1,18 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {BrowserRouter as HashRouter, Switch, Route} from 'react-router-dom';
 import Home from './pages/index';
 import SigninPage from './pages/signin'
 
 function App() {
   return (
     <>
-    <Router>
+    <HashRouter>
       <Switch>
-        <Route path = '/' component = {Home} exact/>
-        <Route path = '/signin' component = {SigninPage} exact/>
+        <Route path = '/' component = {Home} exact={true}/>
+        <Route path = '/signin' component = {SigninPage} exact={true}/>
       </Switch>
-    </Router>
+    </HashRouter>
     </>
   );
 }
