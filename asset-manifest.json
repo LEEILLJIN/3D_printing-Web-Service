@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.d7da34c1.css",
-    "main.js": "/static/js/main.c1570890.js",
-    "static/media/video.mp4": "/static/media/video.26e6a34de17d157a5bc2.mp4",
-    "static/media/logo1-2.png": "/static/media/logo1-2.2a1fcebbbd5e2d708e45.png",
-    "static/media/logo1-4.png": "/static/media/logo1-4.0cfb1f34e78ae7ca853c.png",
-    "static/media/logo1-3.png": "/static/media/logo1-3.2d1df9c36ad907c192ed.png",
-    "static/media/logo1-1.png": "/static/media/logo1-1.9d52e21cc8e5359ed81d.png",
-    "static/media/logo1-6.png": "/static/media/logo1-6.218004921e7ad5268a1a.png",
-    "index.html": "/index.html",
-    "main.d7da34c1.css.map": "/static/css/main.d7da34c1.css.map",
-    "main.c1570890.js.map": "/static/js/main.c1570890.js.map"
+    "main.css": "/3D_printing-Web-Service/static/css/main.d7da34c1.css",
+    "main.js": "/3D_printing-Web-Service/static/js/main.ba303e93.js",
+    "static/media/video.mp4": "/3D_printing-Web-Service/static/media/video.26e6a34de17d157a5bc2.mp4",
+    "static/media/logo1-2.png": "/3D_printing-Web-Service/static/media/logo1-2.2a1fcebbbd5e2d708e45.png",
+    "static/media/logo1-4.png": "/3D_printing-Web-Service/static/media/logo1-4.0cfb1f34e78ae7ca853c.png",
+    "static/media/logo1-3.png": "/3D_printing-Web-Service/static/media/logo1-3.2d1df9c36ad907c192ed.png",
+    "static/media/logo1-1.png": "/3D_printing-Web-Service/static/media/logo1-1.9d52e21cc8e5359ed81d.png",
+    "static/media/logo1-6.png": "/3D_printing-Web-Service/static/media/logo1-6.218004921e7ad5268a1a.png",
+    "index.html": "/3D_printing-Web-Service/index.html",
+    "main.d7da34c1.css.map": "/3D_printing-Web-Service/static/css/main.d7da34c1.css.map",
+    "main.ba303e93.js.map": "/3D_printing-Web-Service/static/js/main.ba303e93.js.map"
   },
   "entrypoints": [
     "static/css/main.d7da34c1.css",
-    "static/js/main.c1570890.js"
+    "static/js/main.ba303e93.js"
   ]
 }
