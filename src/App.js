@@ -16,5 +16,6 @@ function App() {
     </>
   );
 }
-
+// <Router basename={process.env.PUBLIC_URL}> -> 배포한 후 routing이 의도한 데로 되지않아 추가함
+//참고 : https://stackoverflow.com/questions/42686149/cant-build-create-react-app-project-with-custom-public-url?rq=1 
 export default App;
