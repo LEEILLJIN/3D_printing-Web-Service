@@ -12,8 +12,8 @@ export const Container = styled.div`
     overflow : hidden;
     background : linear-gradient(
         108deg,
-        #fff 20%,
-        orange 100%
+        orange 40%,
+        #fff 100%
     );
 `
 export const FormWrap = styled.div`
