@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import Video from '../../videos/video.mp4'
-import { Button } from '../ButtonElements'
+import FileDropZone from '../FileDropZone'
 import { 
     MainContainer, 
     MainBg, 
@@ -8,16 +8,38 @@ import {
     MainContent,
     MainH1,
     MainP,
-    MainBtnWrapper,
-    ArrowForward,
-    ArrowRight
-} from './MainElements'
-const MainSection = () => {
-    const [hover, setHover] = useState(false);
+    MaindropWrapper,
 
-    const onHover =() =>{
-        setHover(!hover);
-    };
+   // Dropbtn
+
+} from './MainElements'
+//import { Button } from '../ButtonElements'
+const MainSection = () => {
+    //const APP_KEY = "nw61dqnhbwfxjjc"; //when use react-dropbox-chooser
+
+    // const fileTypes = ["STL", "PNG"];
+    // const [file, setFile] = useState(null);//when use react-drag-drop-files
+    // const getColor = (props) => {
+    //     if (props.isDragAccept) {
+    //         return '#00e676';
+    //     }
+    //     if (props.isDragReject) {
+    //         return '#ff1744';
+    //     }
+    //     if (props.isFocused) {
+    //         return '#2196f3';
+    //     }
+    //     return '#eeeeee';
+    //   }
+  
+
+    console.log("Published!!!");
+
+    // const handleChange= (file) =>{
+    //     setFile(file);
+    //     console.log(file);
+    // };//when use react-drag-drop-files
+
   return (
     <MainContainer id='home'>
         <MainBg>
@@ -30,22 +52,9 @@ const MainSection = () => {
             <MainP>
                 Sign up for a new account and Use 3D Printer for Reasonable Price!
             </MainP>
-            <MainBtnWrapper>
-                <Button 
-                    to='signup' 
-                    onMouseEnter={onHover} 
-                    onMouseLeave={onHover}
-                    primary='true'
-                    dark='true'
-                    smooth={true}
-                    duration={500}
-                    spy={true}
-                    exact='true'
-                    offset={-80}
-                >
-                    Get started {hover ? <ArrowForward/> : <ArrowRight/>}
-                </Button>
-            </MainBtnWrapper>
+            <MaindropWrapper>
+                <FileDropZone/>
+            </MaindropWrapper>
         </MainContent>
     </MainContainer>
   )

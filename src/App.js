@@ -3,6 +3,7 @@ import './App.css';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Home from './pages/index';
 import SigninPage from './pages/signin'
+import PrintSettingPage from './pages/printsetting';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Switch>
         <Route path = '/' component = {Home} exact={true}/>
         <Route path = '/signin' component = {SigninPage} exact={true}/>
+        <Route path = '/printsetting' component = {PrintSettingPage} exact={true}/>
       </Switch>
     </Router>
     </>

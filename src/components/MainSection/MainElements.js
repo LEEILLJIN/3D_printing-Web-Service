@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { MdArrowForward, MdKeyboardArrowRight} from 'react-icons/md';
 
-
 export const MainContainer = styled.div`
     background: #000;
     display: flex;
@@ -11,8 +10,6 @@ export const MainContainer = styled.div`
     height : 972px;
     position : relative;
     z-index : 1
-
-    
 `
 //Add : before styles
 /*:before{
@@ -87,12 +84,21 @@ export const MainP = styled.p`
     }
 `
 
-export const MainBtnWrapper = styled.div`
-    margin-top : 32px;
+export const MaindropWrapper = styled.div`
+    font-family: sans-serif;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+
+    /* margin-top : 32px;
     display : flex;
     flex-direction : column;
-    align-items: center;
+    align-items: center; */
 `
+
 
 export const ArrowForward = styled(MdArrowForward)`
     margin-left : 8px;
@@ -103,3 +109,48 @@ export const ArrowRight = styled(MdKeyboardArrowRight)`
     margin-left : 8px;
     font-size : 20px;
 `
+
+/* export const FileDropZone =styled.div`
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-width: 2px;
+    border-radius: 2px;
+    border-style: dashed;
+    background-color: #fafafa;
+    color: #bdbdbd;
+    outline: none;
+    transition: border .24s ease-in-out;
+`
+
+export const FileInput = styled.input`
+` */
+/* export const Label = styled.label`
+   
+`
+export const Filename = styled.p`
+    width: 350px;
+    box-sizing: border-box;
+` when use react-drag-drop-files*/ 
+/* export const Dropbtn = styled.div`
+    border-radius : 50px;
+    background: ${({primary})=> (primary ? 'orange' : '#010606')};
+    white-space : nowrap;
+    padding : ${({big}) => (big? '14px 48px' : '12px 30px')};
+    color : ${({dark}) => (dark ? '#010606' : '#fff')};
+    font-size : ${({fontBig}) => (fontBig ? '20px' : '16px')};
+    outline : none;
+    border : none;
+    cursor : pointer;
+    display : flex;
+    justify-content : center;
+    align-items : center;
+    transition : all 0.2s ease-in-out;
+
+    &:hover{
+        transition : all 0.2s ease-in-out;
+        background: ${({primary}) => (primary ? '#fff' : '#01BF71')};
+    }
+` when use react-dropbox-chooser*/

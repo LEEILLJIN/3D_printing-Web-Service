@@ -73,7 +73,8 @@ const Navbar = ({toggle}) => {//create navigation bar
                                     duration={500}
                                     spy={true}
                                     exact='true'
-                                    offset={-80}>Sign Up</NavLinks>
+                                    offset={-80}>Sign Up
+                                </NavLinks>
                             </NavItem>
                         </NavMenu>
                         <NavBtn>
