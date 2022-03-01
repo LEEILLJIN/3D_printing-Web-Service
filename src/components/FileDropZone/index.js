@@ -19,6 +19,7 @@ import { FileDropContainer,
         isFocused,
         isDragAccept,
         isDragReject이용해서 drag event에 따른 dropzone변화주기
+        -> useState랑 FileDropZone의 props를 이용하면 될거같음
         https://react-dropzone.js.org/#section-styling-dropzone
     2.
         multiple files upload with progressbar
@@ -58,6 +59,7 @@ const FileDropZone = (props) => {
             </Thumb>
         </TumbContainer>
       ));
+      //미리보기는 간단해서 일단 구현했는데 나중에 어차피 필요없음
     
   
     return (
