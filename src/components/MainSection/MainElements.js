@@ -41,6 +41,7 @@ export const VideoBg = styled.video`
     //-o-object-fit : cover;
     object-fit : fill;
     background : #232a34;
+    z-index: -3;
 
 `
 

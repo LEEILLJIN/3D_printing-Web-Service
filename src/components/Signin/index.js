@@ -11,6 +11,9 @@ import {
     Form,
     Text
 } from './SigninElements'
+/* 소셜 로그인으로 처리 naver 로그인 
+    로그인 페이지는 없어도 될듯 일단은
+*/
 
 const SignIn = () => {
   return (
