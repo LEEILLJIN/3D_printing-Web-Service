@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/tookdak/static/css/main.d7da34c1.css",
-    "main.js": "/tookdak/static/js/main.1407e305.js",
+    "main.js": "/tookdak/static/js/main.d379e52e.js",
     "static/media/video.mp4": "/tookdak/static/media/video.26e6a34de17d157a5bc2.mp4",
     "static/media/logo1-2.png": "/tookdak/static/media/logo1-2.2a1fcebbbd5e2d708e45.png",
     "static/media/logo1-4.png": "/tookdak/static/media/logo1-4.0cfb1f34e78ae7ca853c.png",
@@ -10,10 +10,10 @@
     "static/media/logo1-6.png": "/tookdak/static/media/logo1-6.218004921e7ad5268a1a.png",
     "index.html": "/tookdak/index.html",
     "main.d7da34c1.css.map": "/tookdak/static/css/main.d7da34c1.css.map",
-    "main.1407e305.js.map": "/tookdak/static/js/main.1407e305.js.map"
+    "main.d379e52e.js.map": "/tookdak/static/js/main.d379e52e.js.map"
   },
   "entrypoints": [
     "static/css/main.d7da34c1.css",
-    "static/js/main.1407e305.js"
+    "static/js/main.d379e52e.js"
   ]
 }
