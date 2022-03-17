@@ -133,27 +133,36 @@ export const ModalContainer = styled.div`
 
 
 `
+export const modalstyle = styled.div`
+    background-color : red;
+    color : red;
+`
+
+export const CloseModalBtnContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+
+`
 
 export const CloseModalBtn = styled.button`
      border-radius : 50px;
-    background: ${({primary})=> (primary ? 'orange' : '#010606')};
+    background:  orange;
     white-space : nowrap;
     padding : ${({big}) => (big? '14px 48px' : '12px 30px')};
-    color : ${({dark}) => (dark ? '#010606' : '#fff')};
+    color : #010606;
     font-size : ${({fontBig}) => (fontBig ? '20px' : '16px')};
     outline : none;
     border : none;
-    cursor : pointer;
-    display : flex;
-    justify-content: center;
-    align-items:center;
-    margin-top: 53%;
+    cursor : pointer;;
+    align-items : center;
     transition : all 0.2s ease-in-out;
     width : 100px;
     height : 60px;
 
     &:hover{
         transition : all 0.2s ease-in-out;
-        background: ${({primary}) => (primary ? '#fff' : '#01BF71')};
+        background: #fff;
     }
 `

@@ -9,7 +9,7 @@ export const MainContainer = styled.div`
     padding : 0 30px;
     height : 972px;
     position : relative;
-    z-index : 1
+    z-index : 1;
 `
 //Add : before styles
 /*:before{
@@ -53,6 +53,7 @@ export const MainContent = styled.div`
     display : flex;
     flex-direction : column;
     align-items : center;
+
 `
 
 export const MainH1 = styled.div`

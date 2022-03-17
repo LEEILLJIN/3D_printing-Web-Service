@@ -49,9 +49,7 @@ const MainSection = () => {
             <MainH1>
                 Tookdak : Reasonable, Effective, convenient 3D Printing Service
             </MainH1>
-            <MainP>
-                Sign up for a new account and Use 3D Printer for Reasonable Price!
-            </MainP>
+            
             <MaindropWrapper>
                 <FileDropZone/>
             </MaindropWrapper>

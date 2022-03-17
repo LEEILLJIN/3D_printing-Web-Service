@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {useDropzone} from 'react-dropzone'
 import Modal from 'react-modal'
+import PrintinfoCheckBox from '../PrintinfoCheckBox';
 
 import { FileDropContainer,
         FileDropWrapper,
@@ -9,11 +10,17 @@ import { FileDropContainer,
         FileDropDecription2,
         ModalContainer,
         CloseModalBtn,
-        FileBtn,
-        FileBtnLink,
-        FileRejectionItems,
-        AcceptedFileItems,
-        Filecheck
+        CloseModalBtnContainer
+        // Option1,
+        // Option2,
+        // Option3,
+        // PrintOption,
+        // modalstyle,
+        // FileBtn,
+        // FileBtnLink,
+        // FileRejectionItems,
+        // AcceptedFileItems,
+        // Filecheck
 
 } from './FileDropZoneElements';
 
@@ -140,7 +147,7 @@ const FileDropZone = (props) => {
       },
       content: {
         display: "flex",
-        ailgnItems : "center",
+        flexDirection: "column",
         justifyContent: "center",
         background: "#ffffe7",
         overflow: "auto",
@@ -160,7 +167,7 @@ const FileDropZone = (props) => {
     };
     function afterOpenModal() {
       // references are now sync'd and can be accessed.
-      subtitle.style.color = '#f00';
+     // subtitle.style.color = '#f00';
     }
   
     function closeModal() {
@@ -236,9 +243,12 @@ const FileDropZone = (props) => {
           contentLabel="Example Modal"
           centered
         >
-            <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
+            
+            <PrintinfoCheckBox/>
+            <CloseModalBtnContainer>
             <CloseModalBtn onClick={closeModal}>close</CloseModalBtn>
-            <div>I am a modal</div>
+
+            </CloseModalBtnContainer>
             <form>
               
             </form>
