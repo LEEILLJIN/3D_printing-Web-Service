@@ -11,47 +11,10 @@ import { FileDropContainer,
         ModalContainer,
         CloseModalBtn,
         CloseModalBtnContainer
-        // Option1,
-        // Option2,
-        // Option3,
-        // PrintOption,
-        // modalstyle,
-        // FileBtn,
-        // FileBtnLink,
-        // FileRejectionItems,
-        // AcceptedFileItems,
-        // Filecheck
-
+        
 } from './FileDropZoneElements';
 
-/* 해야할것:
-    1.
-        isFocused,
-        isDragAccept,
-        isDragReject이용해서 drag event에 따른 dropzone변화주기
-        -> useState랑 FileDropZone의 props를 이용하면 될거같음
-        https://react-dropzone.js.org/#section-styling-dropzone
-    2.
-        multiple files upload with progressbar
-        https://www.bezkoder.com/react-dropzone-multiple-files-upload/
-        ->당장은 필요없음
 
-    3.
-        server로 file data communication?
-        (node.js , firebase, aws a3...)
-        or
-        web에서 file data만 prusa slicer로 돌리기?
-    4. 
-        ok button onclick 후 printing setting page 구성하기
-        (STL to Gcode 구현해야함)
-    5.
-        미리보기는 dropzone안으로 바꾸고 delete button 구현하기
-    ** file 용량 제한**
-
-    **파일 하나만 들어오면 바로 print setting page로
-
-    **서포터 안내문구, 서포터 덜 생기도록 tip도 쓰자 지면으로부터 60도 이상 이면 서포터가 덜 생김**
-    */
 Modal.setAppElement('body');
 const FileDropZone = (props) => {
     const [files, setFiles] = useState([]);
@@ -95,16 +58,25 @@ const FileDropZone = (props) => {
         const k = 1024;
         const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
         const i = Math.floor(Math.log(size) / Math.log(k));
-        return parseFloat((size / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        const parseSize = parseFloat((size / Math.pow(k, i)).toFixed(2));
+        return parseSize + ' ' + sizes[i];
+    }
+
+    const CheckfileSize = (size) => {
+        if (size === 0) return '0 Bytes';
+        const k = 1024;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+        const i = Math.floor(Math.log(size) / Math.log(k));
+        const parseSize = parseFloat((size / Math.pow(k, i)).toFixed(2));
+        return parseSize;
     }
 
     const validateFile = (file) => {
-        console.log(file.type);
-        console.log(file.name.substring(4, 6));
+       
         const filename = file.name;
 
         for(let i = filename.length; i>0; i--){
-          console.log(filename.substring(i-1, i));
+
           if(filename.substring(i-1, i) === "."){
             if(filename.substring(i-1, filename.length) === ".stl"){
                 return true;
@@ -115,17 +87,32 @@ const FileDropZone = (props) => {
         return false;
     }
     const handleFiles = (files) => {
+        var parseSize = 0;
+       
         for(let i = 0; i < files.length; i++) {
             if (validateFile(files[i])) {
                 // add to an array so we can display the name of file
-                setSelectedFiles(prevArray => [...prevArray, files[i]]);
+                console.log(files[i].size);
+                parseSize = CheckfileSize(files[i].size);
+               
+
+                console.log(parseSize);
+                if(parseSize<5){
+                    setSelectedFiles(prevArray => [...prevArray, files[i]]);
+                    openModal();
+
+                }else{
+                    alert("file 용량 체크")
+                }
+                
             } else {
-                // add a new property called invalid
-                files[i]['invalid'] = true;
-                // add to the same array so we can display the name of the file
-                setSelectedFiles(prevArray => [...prevArray, files[i]]);
-                // set error message
-                setErrorMessage('File type not permitted');
+                alert("STL 파일만 가능합니다.")
+                // // add a new property called invalid
+                // files[i]['invalid'] = true;
+                // // add to the same array so we can display the name of the file
+                // setSelectedFiles(prevArray => [...prevArray, files[i]]);
+                // // set error message
+                // setErrorMessage('File type not permitted');
 
             }
         }
@@ -194,11 +181,12 @@ const FileDropZone = (props) => {
         e.preventDefault();
         const files = e.dataTransfer.files;
         console.log(files);
-        setBorderColor(false);   
+        setBorderColor(false);
+
         if(files.length){
           handleFiles(files);
         }
-        openModal();
+       
     }
 
     //console.log(acceptedFiles);

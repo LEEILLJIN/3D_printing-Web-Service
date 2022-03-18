@@ -47,7 +47,10 @@ const MainSection = () => {
         </MainBg>
         <MainContent>
             <MainH1>
-                Tookdak : Reasonable, Effective, convenient 3D Printing Service
+                Tookdak
+            </MainH1>
+            <MainH1>
+                Reasonable, Effective, convenient 3D Printing Service
             </MainH1>
             
             <MaindropWrapper>

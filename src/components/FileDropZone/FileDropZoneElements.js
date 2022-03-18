@@ -17,8 +17,8 @@ export const FileDropContainer = styled.section`
 export const FileDropWrapper = styled.div`
     flex: 1;
     font-size: 20px;
-    height: 500px;
-    width: 700px;
+    height: 450px;
+    width: 650px;
     justify-content: center;
     display: flex;
     flex-direction: column;
