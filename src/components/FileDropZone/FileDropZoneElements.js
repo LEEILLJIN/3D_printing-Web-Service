@@ -4,9 +4,9 @@ import {Link as LinkR} from 'react-router-dom'
 export const FileDropContainer = styled.section`
     height: auto;
     width: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+   
+    
+    
      @media screen and (max-width : 768px){
         height: auto;
         width: 700px;   
@@ -29,6 +29,7 @@ export const FileDropWrapper = styled.div`
     padding: 20px;
     border-width: 4px;
     border-radius: 4px;
+    margin-right: -20px;
     color: ${(props)=> props.borderColor? 'orange' : '#fff'};
     border-style: dashed;
     background : transparent;
@@ -41,6 +42,16 @@ export const FileDropWrapper = styled.div`
         transition : all 0.2s ease-in-out;
 
     }
+
+    @media screen and (min-width : 768px){
+        width: 900px;
+    }
+
+    @media screen and (max-width : 768px){
+        width: 600px;   
+     }
+
+
 
 
 `
