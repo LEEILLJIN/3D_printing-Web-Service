@@ -18,7 +18,6 @@ import { FileDropContainer,
 Modal.setAppElement('body');
 const FileDropZone = (props) => {
     const [files, setFiles] = useState([]);
-
     const [borderColor, setBorderColor] = useState(false);
 
     const [selectedFiles, setSelectedFiles] = useState([]);
@@ -32,23 +31,6 @@ const FileDropZone = (props) => {
     } = useDropzone({
         accept : '.stl',
     });
-
-    // const acceptedFileItems = acceptedFiles.map(file => (
-    //     <li key={file.path}>
-    //       {file.path} - {file.size} bytes
-    //     </li>
-    //   ));
-    
-    //   const fileRejectionItems = fileRejections.map(({ file, errors }) => (
-    //     <li key={file.path}>
-    //       {file.path} - {file.size} bytes
-    //       <ul>
-    //         {errors.map(e => (
-    //           <li key={e.code}>{e.message}</li>
-    //         ))}
-    //       </ul>
-    //     </li>
-    //   ));
     const fileType = (fileName) => {
         return fileName.substring(fileName.lastIndexOf('.') + 1, fileName.length) || fileName;
     }
@@ -62,13 +44,19 @@ const FileDropZone = (props) => {
         return parseSize + ' ' + sizes[i];
     }
 
-    const CheckfileSize = (size) => {
+    const CheckfileSize = (size) => {//나중에 조금 더 깔끔하게 고쳐보자
         if (size === 0) return '0 Bytes';
         const k = 1024;
         const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
         const i = Math.floor(Math.log(size) / Math.log(k));
         const parseSize = parseFloat((size / Math.pow(k, i)).toFixed(2));
-        return parseSize;
+        if(sizes[i]==sizes[3] || sizes[i]==sizes[4]){
+            return 6;//나중에는 51로
+        }else if(sizes[i]==sizes[0] || sizes[i]==sizes[1]){
+            return 0;
+        }else{
+            return parseSize;
+        }
     }
 
     const validateFile = (file) => {
@@ -97,7 +85,7 @@ const FileDropZone = (props) => {
                
 
                 console.log(parseSize);
-                if(parseSize<5){
+                if(parseSize<5){//나중에는 51로 왜냐하면 파일 용량 제한 51mb라서
                     setSelectedFiles(prevArray => [...prevArray, files[i]]);
                     openModal();
 
@@ -107,19 +95,13 @@ const FileDropZone = (props) => {
                 
             } else {
                 alert("STL 파일만 가능합니다.")
-                // // add a new property called invalid
-                // files[i]['invalid'] = true;
-                // // add to the same array so we can display the name of the file
-                // setSelectedFiles(prevArray => [...prevArray, files[i]]);
-                // // set error message
-                // setErrorMessage('File type not permitted');
 
             }
         }
     }
     const [modalIsOpen, setIsOpen] = React.useState(false);
-    let subtitle = "This is modal";
-    function openModal() {
+
+    const openModal=()=> {
       setIsOpen(true);
     }
     const customStyles = {
@@ -139,11 +121,11 @@ const FileDropZone = (props) => {
         background: "#ffffe7",
         overflow: "auto",
         width : "600px",
-        height : "400px",
+        height : "420px",
         top: '50%',
         left: '50%',
         right: 'auto',
-        bottom: 'auto',
+        //bottom: 'auto',
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
         WebkitOverflowScrolling: "touch",
@@ -152,12 +134,12 @@ const FileDropZone = (props) => {
         zIndex: 10,
       },
     };
-    function afterOpenModal() {
+    const afterOpenModal = () => {
       // references are now sync'd and can be accessed.
      // subtitle.style.color = '#f00';
     }
   
-    function closeModal() {
+    const closeModal = () => {
       setIsOpen(false);
     }
 

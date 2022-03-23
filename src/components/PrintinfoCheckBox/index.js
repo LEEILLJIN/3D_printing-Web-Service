@@ -1,8 +1,18 @@
 import React, {useEffect, useState} from 'react'
 
+import none from '../FileDropZone/index'
+
 import {
+    MessageAndCheckboxContainer,
     CheckBoxContainer,
-    CheckBoxGrounp
+    CheckBoxGroup,
+    StateMessageContainer,
+    StateMessageGroup,
+    StateMessageH1,
+    StateMessage1,
+    StateMessage2,
+    StlVolumeContainer,
+    StlVolumeInfo
 }from './CheckBoxElements'
 
 const PrintinfoCheckBox = () => {
@@ -35,45 +45,49 @@ const PrintinfoCheckBox = () => {
       </label>
     )
   }
+  console.log(none);
 
 
   return (
-    <CheckBoxContainer>
-      <CheckBoxGrounp>
-        <CheckBox
-          label = " Value 1"
-          value = {checkedOne}
-          onChange = {handleChangeOne}
-          />
-        <CheckBox
-          label = " Value 2"
-          value = {checkedTwo}
-          onChange = {handleChangeTwo}
-          />
+    <>
+    <MessageAndCheckboxContainer>
+      <StateMessageContainer>
+        <StateMessageH1>
+          Now:{none}
+        </StateMessageH1>
+        <StateMessageGroup>
+          <StateMessage1>
+            채움 - 기본
+          </StateMessage1>
+          <StateMessage2>
+            세심함 - 기본
+          </StateMessage2>
+        </StateMessageGroup>
+      </StateMessageContainer>
+      <StlVolumeContainer>
+        <StlVolumeInfo>
+          STL VOLUME : 
+        </StlVolumeInfo>
+      </StlVolumeContainer>
+      <CheckBoxContainer>
+        <CheckBoxGroup>
           <CheckBox
-          label = " Value 3"
-          value = {checkedThree}
-          onChange = {handleChangeThree}
-          />
-        </CheckBoxGrounp>
-        <CheckBoxGrounp>
-        <CheckBox
-          label = " Value 1"
-          value = {checkedOne}
-          onChange = {handleChangeOne}
-          />
-        <CheckBox
-          label = " Value 2"
-          value = {checkedTwo}
-          onChange = {handleChangeTwo}
-          />
+            label = " 채움을 높음으로"
+            value = {checkedOne}
+            onChange = {handleChangeOne}
+            //해당 checkbox를 체크하면 infill이 높음으로
+            />
           <CheckBox
-          label = " Value 3"
-          value = {checkedThree}
-          onChange = {handleChangeThree}
-          />
-        </CheckBoxGrounp>
-    </CheckBoxContainer>
+            label = " 세심함을 높음으로  "
+            value = {checkedTwo}
+            onChange = {handleChangeTwo}
+            //해당 checkbox를 체크하면 prusa mini로 프린팅된다.
+            //해당 checkbox는 stl file volum체크를 통해 일정 volum이상이면 체크할 수 없게 막아놔야한다.
+            />
+          </CheckBoxGroup>
+      </CheckBoxContainer>
+    </MessageAndCheckboxContainer>
+    </>
   );
 };
 

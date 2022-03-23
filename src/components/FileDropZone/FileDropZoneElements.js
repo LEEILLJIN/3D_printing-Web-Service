@@ -4,6 +4,9 @@ import {Link as LinkR} from 'react-router-dom'
 export const FileDropContainer = styled.section`
     height: auto;
     width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
      @media screen and (max-width : 768px){
         height: auto;
         width: 700px;   
