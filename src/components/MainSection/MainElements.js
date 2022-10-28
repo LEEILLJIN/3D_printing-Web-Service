@@ -49,7 +49,7 @@ export const MainContent = styled.div`
     z-index: 3;
     max-width: 1200px;
     position : absolute;
-    padding : 8px 24px;
+    /* padding : 8px 24px; */
     display : flex;
     flex-direction : column;
     align-items : center;
@@ -60,6 +60,7 @@ export const MainH1 = styled.div`
     color : #000;
     font-size : 40px;
     text-align: center;
+    font-weight: bold;
 
     @media screen and (max-width : 768px){
         font-size: 40px;

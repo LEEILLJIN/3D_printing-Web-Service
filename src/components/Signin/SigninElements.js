@@ -12,8 +12,8 @@ export const Container = styled.div`
     overflow : hidden;
     background : linear-gradient(
         108deg,
-        orange 40%,
-        #fff 100%
+        #f76902 50%,
+        #ff7f36 100%
     );
 `
 export const FormWrap = styled.div`
@@ -33,6 +33,7 @@ export const Icon = styled(Link)`
     color : #fff;
     font-weight : 700;
     font-size : 32px;
+    width : 130px;
 
     @media screen and (max-width : 480px){
         margin-left : 16px;

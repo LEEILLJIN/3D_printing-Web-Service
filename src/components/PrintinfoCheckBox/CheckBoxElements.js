@@ -14,9 +14,9 @@ export const StateMessageContainer = styled.div`
     height: 70px;
 `
 export const StateMessageH1 = styled.h1`
-    margin-right: 15%;
+    margin-right: 10%;
     padding-top : 10px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
 
 `
 
@@ -41,7 +41,7 @@ export const StlVolumeInfo = styled.p`
 export const CheckBoxContainer = styled.div`
     /* height: 400px;
     width: 500px; */
-    height: 200px;
+    height: 300px;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;

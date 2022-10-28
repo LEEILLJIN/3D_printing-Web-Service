@@ -52,7 +52,6 @@ const MainSection = () => {
             <MainH1>
                 Reasonable, Effective, convenient 3D Printing Service
             </MainH1>
-            
             <MaindropWrapper>
                 <FileDropZone/>
             </MaindropWrapper>

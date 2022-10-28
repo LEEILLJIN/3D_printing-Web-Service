@@ -4,6 +4,8 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Home from './pages/index';
 import SigninPage from './pages/signin'
 import PrintSettingPage from './pages/printsetting';
+import PaymentPage from './pages/payment';
+import QnAPage from './pages/Q&A';
 
 function App() {
   return (
@@ -12,7 +14,9 @@ function App() {
       <Switch>
         <Route path = '/' component = {Home} exact={true}/>
         <Route path = '/signin' component = {SigninPage} exact={true}/>
+        <Route path = '/Q&A' component = {QnAPage} exact={true}/>
         <Route path = '/printsetting' component = {PrintSettingPage} exact={true}/>
+        <Route path = '/payment' component={PaymentPage}/>
       </Switch>
     </Router>
     </>

@@ -1,7 +1,8 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import {useDropzone} from 'react-dropzone'
 import Modal from 'react-modal'
-import PrintinfoCheckBox from '../PrintinfoCheckBox';
+import PrintinfoCheckBox from '../PrintinfoCheckBox'
+import axios from 'axios'
 
 import { FileDropContainer,
         FileDropWrapper,
@@ -10,18 +11,26 @@ import { FileDropContainer,
         FileDropDecription2,
         ModalContainer,
         CloseModalBtn,
-        CloseModalBtnContainer
+        BtnContainer,
+        ModalBtnLink,
+        FileInput
         
 } from './FileDropZoneElements';
+//import { response } from 'express'
+// response 하려고 하면 error가 많이 뜬다 왜???
 
 
+// stl temp 폴더 : 사용자가 올린 stl 파일
+// gcode temp 폴더 : 사용자가 올린 stl 파일을 gcode로 변환해서 저장하는 폴더
+// stl all 폴더 :
+// gcode all 폴더 :
 Modal.setAppElement('body');
 const FileDropZone = (props) => {
-    const [files, setFiles] = useState([]);
+
     const [borderColor, setBorderColor] = useState(false);
 
     const [selectedFiles, setSelectedFiles] = useState([]);
-    const [errorMessage, setErrorMessage] = useState('');
+
     const {
         getRootProps, 
         getInputProps,
@@ -30,19 +39,23 @@ const FileDropZone = (props) => {
 
     } = useDropzone({
         accept : '.stl',
-    });
-    const fileType = (fileName) => {
-        return fileName.substring(fileName.lastIndexOf('.') + 1, fileName.length) || fileName;
-    }
 
-    const fileSize = (size) => {
-        if (size === 0) return '0 Bytes';
-        const k = 1024;
-        const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
-        const i = Math.floor(Math.log(size) / Math.log(k));
-        const parseSize = parseFloat((size / Math.pow(k, i)).toFixed(2));
-        return parseSize + ' ' + sizes[i];
-    }
+    });
+
+    const [files, setFiles] = useState([])
+
+    // const fileType = (fileName) => {
+    //     return fileName.substring(fileName.lastIndexOf('.') + 1, fileName.length) || fileName;
+    // }
+
+    // const fileSize = (size) => {
+    //     if (size === 0) return '0 Bytes';
+    //     const k = 1024;
+    //     const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+    //     const i = Math.floor(Math.log(size) / Math.log(k));
+    //     const parseSize = parseFloat((size / Math.pow(k, i)).toFixed(2));
+    //     return parseSize + ' ' + sizes[i];
+    // }
 
     const CheckfileSize = (size) => {//나중에 조금 더 깔끔하게 고쳐보자
         if (size === 0) return '0 Bytes';
@@ -51,7 +64,7 @@ const FileDropZone = (props) => {
         const i = Math.floor(Math.log(size) / Math.log(k));
         const parseSize = parseFloat((size / Math.pow(k, i)).toFixed(2));
         if(sizes[i]==sizes[3] || sizes[i]==sizes[4]){
-            return 6;//나중에는 51로
+            return 51;
         }else if(sizes[i]==sizes[0] || sizes[i]==sizes[1]){
             return 0;
         }else{
@@ -59,7 +72,7 @@ const FileDropZone = (props) => {
         }
     }
 
-    const validateFile = (file) => {
+    const validateFile1 = (file) => {
        
         const filename = file.name;
 
@@ -67,26 +80,47 @@ const FileDropZone = (props) => {
 
           if(filename.substring(i-1, i) === "."){
             if(filename.substring(i-1, filename.length) === ".stl"){
-                return true;
+                return true; 
             }
           }
         }
 
         return false;
-    }
-    const handleFiles = (files) => {
-        var parseSize = 0;
-       
-        for(let i = 0; i < files.length; i++) {
-            if (validateFile(files[i])) {
-                // add to an array so we can display the name of file
-                console.log(files[i].size);
-                parseSize = CheckfileSize(files[i].size);
-               
+    } 
 
-                console.log(parseSize);
-                if(parseSize<5){//나중에는 51로 왜냐하면 파일 용량 제한 51mb라서
+    const handleFiles1 = (files) => {
+        let parseSize = 0;
+        console.log(files.length)
+        for(let i = 0; i < files.length; i++) {
+            if (validateFile1(files[i])) {
+                setFiles(files)
+                console.log(files[i]);
+                console.log(files[i].size);//file size
+                
+                parseSize = CheckfileSize(files[i].size);
+
+                // //stl을 파일을 백앤드로 보내줌
+                // let formData = new FormData();
+                // const config = {
+                //     header:{'content-type': 'multipart/form-data'}
+                // }
+                // formData.append("file", files[i])
+
+                // axios.post('')
+
+                if(parseSize<40){//나중에는 51로 왜냐하면 파일 용량 제한 51mb라서
                     setSelectedFiles(prevArray => [...prevArray, files[i]]);
+                    
+                    //FileToUrl(files[i].name);
+                    let reader = new FileReader();
+                    let file = files[i];
+                    reader.onload = () => {
+                        this.setState({
+                            file : file,
+
+
+                        })
+                    }
                     openModal();
 
                 }else{
@@ -99,6 +133,7 @@ const FileDropZone = (props) => {
             }
         }
     }
+
     const [modalIsOpen, setIsOpen] = React.useState(false);
 
     const openModal=()=> {
@@ -120,12 +155,12 @@ const FileDropZone = (props) => {
         justifyContent: "center",
         background: "#ffffe7",
         overflow: "auto",
-        width : "600px",
-        height : "420px",
+        width : "800px",
+        height : "500px",
+        padding : "15px",
         top: '50%',
         left: '50%',
         right: 'auto',
-        //bottom: 'auto',
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
         WebkitOverflowScrolling: "touch",
@@ -135,8 +170,7 @@ const FileDropZone = (props) => {
       },
     };
     const afterOpenModal = () => {
-      // references are now sync'd and can be accessed.
-     // subtitle.style.color = '#f00';
+     
     }
   
     const closeModal = () => {
@@ -162,79 +196,112 @@ const FileDropZone = (props) => {
     const fileDrop = (e) => {
         e.preventDefault();
         const files = e.dataTransfer.files;
-        console.log(files);
         setBorderColor(false);
+        
 
         if(files.length){
-          handleFiles(files);
+          handleFiles1(files);
         }
        
     }
 
+    const fileInputRef = useRef();
+
+    const fileInputClicked = () => {
+        fileInputRef.current.click();
+    }
+
+    const filesSelected = () => {
+        if (fileInputRef.current.files.length) {
+            handleFiles1(fileInputRef.current.files);
+            console.log(fileInputRef.current.files)
+        }
+    }
     //console.log(acceptedFiles);
 
-    
+    // const handleFile = (e) => {
+    //     const formdata = new FormData()
+        
+
+    //     const config = {
+    //         header: {'content-type' : 'multipart/form-data'}
+    //     }
+
+    //     formdata.append('uploadfile', files[0])
+
+    //     axios.post('',form, config)
+    //         // 백엔드가 file 저장하고 그 결과가 response에 담김
+    //         // 백엔드는 그 결과를 프론트로 보내줌
+    //         // axios.post안의 ''에 뭐가 들어가야 할까
+    //         .then(response =>{
+    //             if(response.data.success){
+
+    //             }else{
+    //                 alert('파일 저장 실패')
+    //             }
+    //         })
+    // }
   
     return (
-      <FileDropContainer>
-        <FileDropWrapper borderColor = {borderColor} {...getRootProps()}
+      <FileDropContainer >
+        <FileDropWrapper 
+            borderColor = {borderColor} {...getRootProps()}
             onDragOver = {dragOver}
             onDragEnter = {dragEnter}
             onDragLeave = {dragLeave}
             onDrop = {fileDrop}
+            onClick={fileInputClicked}
         >
+        
           <FileDropInput {...getInputProps()} />
           <FileDropDecription1>Only STL File</FileDropDecription1>
           <FileDropDecription2>Drag N drop some files here, or click to select files</FileDropDecription2>
+          <FileInput
+            ref={fileInputRef}
+            className="file-input"
+            type="file"
+            onChange={filesSelected}
+            />
 
         </FileDropWrapper>
-        <div className="file-display-container">
-            {
-                selectedFiles.map((data, i) => 
-                    <div className="file-status-bar" key={i}>
-                        <div>
-                            <div className="file-type-logo"></div>
-                            <div className="file-type">{fileType(data.name)}</div>
-                            <span className={`file-name ${data.invalid ? 'file-error' : ''}`}>{data.name}</span>
-                            <span className="file-size">({fileSize(data.size)})</span> {data.invalid && <span className='file-error-message'>({errorMessage})</span>}
-                        </div>
-                        <div className="file-remove">X</div>
-                    </div>
-                )
-            }
-        </div>
+
         <ModalContainer id="ok">
-          <button onClick={openModal}>Open Modal</button>
+          {/* <button onClick={openModal}>Open Modal</button> */}
           <Modal
           isOpen={modalIsOpen}
           onAfterOpen={afterOpenModal}
           onRequestClose={closeModal}
           style={customStyles}
-          contentLabel="Example Modal"
+          contentLabel="Modal"
           centered
         >
             
+            {/* <PrintinfoCheckBox stlfile = {fileInputRef.current.files[0]}/> */}
             <PrintinfoCheckBox/>
-            <CloseModalBtnContainer>
-            <CloseModalBtn onClick={closeModal}>close</CloseModalBtn>
-
-            </CloseModalBtnContainer>
+            
+            {/* <StlViewer
+            width={500}
+            height={500}
+            url='elephant.stl'
+            groundColor='rgb(255, 255, 255)'
+            objectColor='rgb(50, 255, 255)'
+            skyboxColor='rgb(255, 255, 255)'
+            gridLineColor='rgb(0, 0, 0)'
+            lightColor='rgb(255, 255, 255)'
+       
+          /> */}
+            <BtnContainer>
+                <CloseModalBtn onClick={closeModal}>Close</CloseModalBtn>
+                <ModalBtnLink to= '/printsetting' >Next</ModalBtnLink>
+                        
+            </BtnContainer>
             <form>
               
             </form>
           </Modal>
         </ModalContainer>
-        {/* <Filecheck>
-            <h4>Accepted files</h4>
-            <AcceptedFileItems>
-                {acceptedFileItems}
-            </AcceptedFileItems>
-            <h4>Rejected files</h4>
-            <FileRejectionItems>
-                {fileRejectionItems}
-            </FileRejectionItems>
-        </Filecheck>
-        <FileBtn>
+        
+        {/* <FileBtn>
             <FileBtnLink to= '/printsetting'>ok</FileBtnLink>
         </FileBtn> */}
       </FileDropContainer>

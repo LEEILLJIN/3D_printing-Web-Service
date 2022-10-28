@@ -1,20 +1,23 @@
 import styled from "styled-components";
 import {Link as LinkR} from 'react-router-dom'
+import {Link as LinkS} from 'react-scroll'
 
 export const FileDropContainer = styled.section`
-    height: auto;
-    width: auto;
-   
-    
-    
-     @media screen and (max-width : 768px){
-        height: auto;
-        width: 700px;   
+    margin-top: 5%;
+    height: 450px;
+    width: 900px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+     @media screen and (min-width : 768px){
+        width: 900px;
+        height: 600px;
      }
 
     @media screen and (max-width : 480px){
-        height: auto;
-        width: auto;
+        width: 480px;
+        height: 400px;
     }
 `
 export const FileDropWrapper = styled.div`
@@ -29,7 +32,6 @@ export const FileDropWrapper = styled.div`
     padding: 20px;
     border-width: 4px;
     border-radius: 4px;
-    margin-right: -20px;
     color: ${(props)=> props.borderColor? 'orange' : '#fff'};
     border-style: dashed;
     background : transparent;
@@ -44,11 +46,13 @@ export const FileDropWrapper = styled.div`
     }
 
     @media screen and (min-width : 768px){
-        width: 900px;
+        width: 700px;
+        height: 450px;
     }
 
     @media screen and (max-width : 768px){
         width: 600px;   
+        height: 450px;
      }
 
 
@@ -140,11 +144,15 @@ export const AcceptedFileItems = styled.ul`
 export const FileRejectionItems = styled.ul`
 `
 
-export const Filecheck = styled.aside`
+export const Filecheck = styled.div`
 `
 
 export const ModalContainer = styled.div`
 
+
+`
+export const FileInput = styled.input`
+    display: none;
 
 `
 export const modalstyle = styled.div`
@@ -152,7 +160,7 @@ export const modalstyle = styled.div`
     color : red;
 `
 
-export const CloseModalBtnContainer = styled.div`
+export const BtnContainer = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -161,7 +169,8 @@ export const CloseModalBtnContainer = styled.div`
 `
 
 export const CloseModalBtn = styled.button`
-     border-radius : 50px;
+    margin-right: 3%;
+    border-radius : 50px;
     background:  orange;
     white-space : nowrap;
     padding : ${({big}) => (big? '14px 48px' : '12px 30px')};
@@ -173,10 +182,35 @@ export const CloseModalBtn = styled.button`
     align-items : center;
     transition : all 0.2s ease-in-out;
     width : 100px;
-    height : 60px;
+    height : 50px;
 
     &:hover{
         transition : all 0.2s ease-in-out;
         background: #fff;
     }
 `
+export const ModalBtnLink = styled(LinkR)`
+    display: flex;
+    border-radius : 50px;
+    background: orange;
+    white-space : nowrap;
+    padding: 10px 22px;
+    color : #010606;
+    font-size : 16px;
+    outline : none;
+    border : none;
+    cursor : pointer;
+    align-items : center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+    text-decoration : none;
+    width : 100px;
+    height : 50px;
+
+
+    &:hover{
+        transition : all 0.2s ease-in-out;
+        background : #fff;
+        color : #010606;
+    }
+ `
