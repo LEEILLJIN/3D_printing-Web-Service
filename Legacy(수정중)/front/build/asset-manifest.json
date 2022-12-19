@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d4f97627.css",
+    "main.js": "/static/js/main.8ba48e4c.js",
+    "static/media/video.mp4": "/static/media/video.26e6a34de17d157a5bc2.mp4",
+    "static/media/afterCatbusRight.png": "/static/media/afterCatbusRight.1cb05b271056cb54f89d.png",
+    "static/media/afterCatbusLeft.png": "/static/media/afterCatbusLeft.7f253781e102dfa03df2.png",
+    "static/media/beforeCatbusLeft.png": "/static/media/beforeCatbusLeft.e6f4475a6cd062658119.png",
+    "static/media/beforeCatbusFront.png": "/static/media/beforeCatbusFront.3dcd11ec2b134ba71a84.png",
+    "static/media/beforeCatbusRight.png": "/static/media/beforeCatbusRight.68a97ed25fc96e988379.png",
+    "static/media/afterCatbusBack.png": "/static/media/afterCatbusBack.2b42ca4c53cb36707eca.png",
+    "static/media/afterCatbusFront.png": "/static/media/afterCatbusFront.37681679269115654c49.png",
+    "static/media/beforeCatbusBack.png": "/static/media/beforeCatbusBack.aa0457b571ddbb7f6bc9.png",
+    "static/media/logo_3D.png": "/static/media/logo_3D.a7629cd2c97700b5aab8.png",
+    "static/media/logo1-2.png": "/static/media/logo1-2.2a1fcebbbd5e2d708e45.png",
+    "static/media/logo1-4.png": "/static/media/logo1-4.0cfb1f34e78ae7ca853c.png",
+    "static/media/logo1-3.png": "/static/media/logo1-3.2d1df9c36ad907c192ed.png",
+    "static/media/logo1-6.png": "/static/media/logo1-6.218004921e7ad5268a1a.png",
+    "index.html": "/index.html",
+    "main.d4f97627.css.map": "/static/css/main.d4f97627.css.map",
+    "main.8ba48e4c.js.map": "/static/js/main.8ba48e4c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d4f97627.css",
+    "static/js/main.8ba48e4c.js"
+  ]
+}

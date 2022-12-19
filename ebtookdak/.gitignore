@@ -1,0 +1,11 @@
+#global
+*.Identifier
+
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+#ebtookdak
+__pycache__/

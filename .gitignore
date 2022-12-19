@@ -1,2 +1,16 @@
-node_modules
+#global
+*.Identifier
+
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+#ebtookdak
+__pycache__/
+
+# front file
+node_modules/
 resource_file/
+source_file/
